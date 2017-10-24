@@ -1,0 +1,51 @@
+/*yellow = #DAB651*/
+/*blue middle = #223244*/
+
+/*canvas{
+  z-index: 1;
+
+}*/
+
+.own-content{
+  background-color: transparent;
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+
+  font-family: 'Orbitron', sans-serif;
+
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-rows: auto;
+  grid-template-areas: " . logo . "
+                       " monkey . . ";
+}
+
+#logo{
+  margin-top: 30px;
+  background-color: transparent;
+  grid-area: logo;
+}
+
+.monkey{
+  grid-area: monkey;
+}
+
+h3{
+  text-align: center;
+}
+
+.particles-js{
+  grid-area: particles;
+}
+
+.option{
+  font-size: 50px;
+  color: #DAB651;
+}
+
+.hidden{
+  display: none;
+}

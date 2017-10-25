@@ -67,7 +67,7 @@ $(document).ready(function(){
     setTimeout(()=>{
       let link = $(this).find("a").attr("href");
       window.open(link, '_blank');
-    }, 700);
+    }, 500);
   })
 
 

@@ -19,7 +19,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 400px 1fr ;
-  grid-template-areas: ". logo ."
+  grid-template-areas: "burger logo keepcalm"
                        " monkey excuse ownSite ";
 }
 
@@ -42,6 +42,14 @@
 
 .ownsite{
   grid-area: ownSite;
+}
+
+.burger{
+  grid-area: burger;
+}
+
+.keepcalm{
+  grid-area: keepcalm
 }
 
 .shot{

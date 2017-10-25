@@ -12,7 +12,7 @@ $.fn.extend({
 $(document).ready(function(){
   let clickToUncover = 0;
   let hidden = true;
-  let password = "bjab to code";
+  let password = "bjab";
   let guess = '';
 
 
@@ -50,6 +50,9 @@ $(document).ready(function(){
   $('#logo').click(function(){
     $('#logo').removeClass();
     $('#logo').animateCss('hinge');
+    setTimeout(()=>{
+      $('#logo').animateCss('slideInDown');
+    }, 2000);
   })
 
   // Affichage print-screen sur hover des options

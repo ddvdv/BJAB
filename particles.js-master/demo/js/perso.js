@@ -12,37 +12,62 @@ $.fn.extend({
 $(document).ready(function(){
   let clickToUncover = 0;
   let hidden = true;
-  let password = "bjab";
+  let password = "bjabEnter";
   let guess = '';
   let update = 0;
   let updated = false;
+  let nbTry = 0;
 
 
-  // Révélation du site par click
+  // Révélation des hints par click
   $('canvas').click(function(){
     clickToUncover++;
-    if (clickToUncover >= 15 && hidden == true){
-      hidden = false;
-      $('.own-content').css('z-index', 1);
-      $('#logo').removeClass();
-      $('#logo').animateCss('jackInTheBox');
+    if (clickToUncover == 7){
+      $('#interface').animateCss('fadeIn');
+      $('#interface').text("What if you stopped tickling me...");
+      setTimeout( () => {
+        $('#interface').animateCss('fadeOut');
+      }, 1000)
+      // $('#interface').text("");
+      setTimeout( () =>{
+        $('#interface').text("and tried a password instead?");        
+        $('#interface').animateCss('fadeIn');
+      }, 2000);
+
     }
   })
 
-  // Révélation du site par konami
+  // Révélation du site par mdp
   $('body').on('keypress', (e) => {
     guess = guess + e.key;
     console.log(e.key);
     console.log(guess);
     console.log(password);
 
-    if (guess == password){
-      hidden = false;
-      $('.own-content').css('z-index', 1);
-      $('#logo').removeClass();
-      $('#logo').animateCss('jackInTheBox');
-      $('body').off();
+    if (e.key === 'Enter'){
+      if (guess == password){
+        hidden = false;
+        $('#interface').animateCss('zoomIn');
+        $('#interface').text('Well done!');
+        setTimeout( () => {
+            $('#interface').remove();
+            $('.own-content').css('z-index', 1);
+            $('#logo').removeClass();
+            $('#logo').animateCss('jackInTheBox');
+            $('body').off();
+        }, 1000);
+      } else {
+        nbTry++;
+        if (nbTry == 3){
+          $('#interface').text("What about.. the name of your school?");
+        } else {
+          $('#interface').animateCss('shake');
+          $('#interface').text("Try again");
+        }
+        guess = '';
+      }
     }
+
   })
 
 

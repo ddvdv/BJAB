@@ -1,10 +1,25 @@
 /*yellow = #DAB651*/
 /*blue middle = #223244*/
 
-/*canvas{
-  z-index: 1;
+#interface{
+  z-index: 2;
+  position: absolute;
+  top: 400px;
+  color: #DAB651;
+  font-size: 70px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  width: 100%;
+}
 
-}*/
+*{
+  user-drag: none; 
+  user-select: none;$
+-moz-user-select: none;
+-webkit-user-drag: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+}
 
 .own-content{
   background-color: transparent;
@@ -38,9 +53,9 @@
   grid-area: monkey;
 }
 
-/*.excuse{
+.excuse{
   grid-area: excuse;
-}*/
+}
 
 .ownsite{
   grid-area: ownSite;
@@ -99,7 +114,7 @@ a{
 }
 
 .rating{
-  /*position: absolute;*/
+  /*position: absolute;
   /*bottom: 20px;*/
   margin-left: 10px;
   text-align: center;

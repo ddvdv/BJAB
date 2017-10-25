@@ -14,6 +14,8 @@ $(document).ready(function(){
   let hidden = true;
   let password = "bjab";
   let guess = '';
+  let update = 0;
+  let updated = false;
 
 
   // Révélation du site par click
@@ -46,25 +48,48 @@ $(document).ready(function(){
 
 
 
-  // Effet sur le logo principal
+  // Effet sur le logo principal et révélation de l'exo final
   $('#logo').click(function(){
-    $('#logo').removeClass();
-    $('#logo').animateCss('hinge');
-    setTimeout(()=>{
-      $('#logo').animateCss('slideInDown');
-    }, 2000);
+    update++;
+    if (update > 2 && updated == false){
+      updated = true;
+      $('#logo').removeClass();
+      $('#logo').animateCss('hinge');
+      setTimeout(()=>{
+        // $('#logo').animateCss('slideInDown');
+        $('#logo').remove();
+        $('.own-content').append(`
+          <div class="option excuse" style="grid-area: logo">
+          <h3>Excuse generator</h3>
+          <a href="https://thimbleprojects.org/mozillalearning/11698/" class="scrn hidden" target="_blank">
+          <img class="shot" src="../../scrn-excuse.jpeg" alt="excuse" unselectable="on">
+          <div class="rating">Level 
+          <i class="fa fa-star" style="font-size:24px"></i>
+          <i class="fa fa-star" style="font-size:24px"></i>
+          <i class="fa fa-star" style="font-size:24px"></i>
+          <i class="fa fa-star" style="font-size:24px"></i>
+          <i class="fa fa-star" style="font-size:24px"></i>
+          </div>
+          </a>
+          </div>
+          `)
+      }, 2000);
+    }
   })
 
   // Affichage print-screen sur hover des options
-  $('.option').mouseenter(function(){
+  $('.own-content').on('mouseenter', '.option', function(){
     $(this).find('.scrn').removeClass('hidden');
-    $(this).find('h3').animateCss('pulse');
-  }).mouseleave(function(){
+    $(this).find('h3').animateCss('tada');
+  })
+
+  $('.own-content').on('mouseleave', '.option', function(){
     $(this).find('.scrn').addClass('hidden');
+
   })
 
 
-  $('.option').click(function(e){
+  $('.own-content').on('click', '.option', function(e){
     e.preventDefault();
     $(this).animateCss('rollOut');
     setTimeout(()=>{

@@ -18,9 +18,9 @@
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 400px 1fr ;
-  grid-template-areas: "burger logo keepcalm"
-                       " monkey excuse ownSite ";
+  grid-template-rows: 400px 1fr;
+  grid-template-areas: "monkey logo firstLine"
+                       "burger keepcalm ownSite";
 }
 
 #logo{
@@ -36,9 +36,9 @@
   grid-area: monkey;
 }
 
-.excuse{
+/*.excuse{
   grid-area: excuse;
-}
+}*/
 
 .ownsite{
   grid-area: ownSite;
@@ -50,6 +50,10 @@
 
 .keepcalm{
   grid-area: keepcalm
+}
+
+.firstLine{
+  grid-area: firstLine
 }
 
 .shot{
@@ -80,6 +84,7 @@ a{
   color: #DAB651;
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
   margin: 10px;
   height: 300px;
   width: 460px;
@@ -87,4 +92,13 @@ a{
 
 .hidden{
   opacity: 0.2;
+}
+
+.rating{
+  /*position: absolute;*/
+  /*bottom: 20px;*/
+  margin-left: 10px;
+  text-align: center;
+  color: #DAB651 ;
+  font-size: 20px;
 }

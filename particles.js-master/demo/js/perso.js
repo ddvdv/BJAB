@@ -17,6 +17,7 @@ $(document).ready(function(){
   let update = 0;
   let updated = false;
   let nbTry = 0;
+  let showCombat = false;
 
 
   // Révélation des hints par click
@@ -50,11 +51,31 @@ $(document).ready(function(){
         $('#interface').animateCss('zoomIn');
         $('#interface').text('Well done!');
         setTimeout( () => {
-            $('#interface').remove();
-            $('.own-content').css('z-index', 1);
-            $('#logo').removeClass();
-            $('#logo').animateCss('jackInTheBox');
-            $('body').off();
+          $('#interface').remove();
+          $('.own-content').css('z-index', 1);
+          $('#logo').removeClass();
+          $('#logo').animateCss('jackInTheBox');
+          $('body').off();
+          $('body').on('keypress', (e) => {
+            if (e.key == "c" && showCombat == false){
+              showCombat == true;
+              $('.own-content').append(`
+                <div class="option combat">
+                <h3>Fight in Code Combat</h3>
+                <a href="https://codecombat.com/play/dungeon" class="scrn hidden" target="_blank">
+                <img class="shot" src="../../scrn-combat.jpeg" alt="combat" unselectable="on">
+                <div class="rating">Level 
+                <i class="fa fa-star" style="font-size:24px"></i>
+                <i class="fa fa-star" style="font-size:24px"></i>
+                <i class="fa fa-star" style="font-size:24px"></i>
+                <i class="fa fa-star-o" style="font-size:24px"></i>
+                <i class="fa fa-star-o" style="font-size:24px"></i>
+                </div>
+                </a>
+                </div>
+                `);
+            }
+          });
         }, 1000);
       } else {
         nbTry++;
@@ -67,8 +88,11 @@ $(document).ready(function(){
         guess = '';
       }
     }
-
   })
+
+
+
+
 
 
 
